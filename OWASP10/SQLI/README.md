@@ -1,15 +1,15 @@
 _____________
 # 📑 SQL Injection: Lab Index & Exercise Guide
 
-- [Lab 01 — SQLi Login Bypass (Nickname `administrator`)](https://www.google.com/search?q=%23lab-01--sqli-login-bypass-nickname-administrator)
-- [Lab 02 — Database Type & Version Enumeration (Oracle)](https://www.google.com/search?q=%23lab-02--database-type--version-enumeration-oracle)
-- [Lab 03 — Database Type & Version Enumeration (MySQL & MSSQL)](https://www.google.com/search?q=%23lab-03--database-type--version-enumeration-mysql--mssql)
-- [Lab 04 — Listing Database Contents (Non-Oracle / PostgreSQL)](https://www.google.com/search?q=%23lab-04--listing-database-contents-non-oracle--postgresql)
-- [Lab 05 — Listing Database Contents (Oracle-Specific)](https://www.google.com/search?q=%23lab-05--listing-database-contents-oracle-specific)
-- [Lab 06 — Blind SQLi: Conditional Responses (Welcome Back Message)](https://www.google.com/search?q=%23lab-06--blind-sqli-conditional-responses-welcome-back-message)
-- [Lab 07 — Blind SQLi: Conditional Errors (Oracle `1/0` Trigger)](https://www.google.com/search?q=%23lab-07--blind-sqli-conditional-errors-oracle-10-trigger)
-- [Lab 08 — Visible Error-Based SQLi (Exfiltration via `CAST`)](https://www.google.com/search?q=%23lab-08--visible-error-based-sqli-exfiltration-via-cast)
-- [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](https://www.google.com/search?q=%23lab-09--blind-sqli-time-delays--information-retrieval-postgresql)
+- [Lab 01 — SQLi Login Bypass (Nickname `administrator`)](SQL injection vulnerability allowing login bypass)
+- [Lab 02 — Database Type & Version Enumeration (Oracle)](Lab: SQL injection attack, querying the database type and version on Oracle)
+- [Lab 03 — Database Type & Version Enumeration (MySQL & MSSQL)](SQL injection attack, querying the database type and version on MySQL and Microsoft)
+- [Lab 04 — Listing Database Contents (Non-Oracle / PostgreSQL)](SQL injection attack, listing the database contents on non-Oracle databases)
+- [Lab 05 — Listing Database Contents (Oracle-Specific)](SQL injection attack, listing the database contents on Oracle)
+- [Lab 06 — Blind SQLi: Conditional Responses (Welcome Back Message)](Lab: Blind SQL injection with conditional responses)
+- [Lab 07 — Blind SQLi: Conditional Errors (Oracle `1/0` Trigger)](Conditional Error)
+- [Lab 08 — Visible Error-Based SQLi (Exfiltration via `CAST`)](Visible Error-Based SQL Injection)
+- [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](Blind SQL injection with time delays and information retrieval)
  
 __________________
 ## SQL injection vulnerability allowing login bypass
