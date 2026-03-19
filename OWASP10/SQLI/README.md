@@ -412,7 +412,7 @@ This confirms that we must indeed operate with a boolean/binary logic!
 
 - We go to the **Cheat Sheet** to extract the standard script for these scenarios: [https://portswigger.net/web-security/sql-injection/cheat-sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
-```
+``` 
 SELECT CAST((SELECT password FROM users LIMIT 1) AS int)
 ```
     Since we are dealing with type mismatches, the proper approach is to use **CAST**, which converts one data format to another.
