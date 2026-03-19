@@ -160,7 +160,7 @@ That tells me the problem is not HTML injection, but **how the browser interpret
 
 So instead of thinking in tags, I focused on **protocols**.
 
-![[Captura de pantalla 2025-11-21 140208.png]]
+<img width="404" height="80" alt="Captura de pantalla 2025-11-21 140208" src="https://github.com/user-attachments/assets/3505395c-02b7-49c0-87ea-2ccc1baaf69c" />
 
 **Attack vector**
 
