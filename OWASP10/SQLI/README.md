@@ -12,6 +12,7 @@ _____________
 * [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](#lab-09--blind-sqli-time-delays--information-retrieval-postgresql)
 
 
+
 __________________
 ## SQL injection vulnerability allowing login bypass
 
