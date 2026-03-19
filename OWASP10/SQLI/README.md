@@ -48,7 +48,7 @@ https://0a7d00f7031d341b8097219200fa0080.web-security-academy.net/filter?categor
 ```
      This injection will list the information we need.
 
-### Key points of this injection:
+## Key points of this injection:
 
 - **Why `NULL`?**  
     In Oracle (and other engines), the columns in a `UNION SELECT` must match in **data type**. We use `NULL` for the first column because a null value is compatible with any data type (text, number, date), which helps avoid syntax errors while testing.
@@ -63,7 +63,7 @@ Identifying the exact version is the first step of **advanced reconnaissance**. 
 
 _____________________________
 
-# SQL injection attack, querying the database type and version on MySQL and Microsoft
+## SQL injection attack, querying the database type and version on MySQL and Microsoft
 
 - In this exercise, we are going to list the **type and version of the database** with the help of:
 
@@ -285,7 +285,7 @@ This disables SSL certificate verification.
 
 _____________________________
 
-# Conditional Error
+## Conditional Error
 
 - For this exercise, we need to extract the **password** for the user **administrator**.
 
@@ -381,7 +381,7 @@ print(f" Password :  {password}")
 ______________________________
 
 
-# Visible Error-Based SQL Injection
+## Visible Error-Based SQL Injection
 
 - For this exercise, we need to extract the **administrator** password. Let's understand how **Visible error-based SQL injection** works:
 
@@ -451,7 +451,7 @@ With this change, the server "vomits" the password within the error message.
 _________________________
 
 
-# Blind SQL injection with time delays and information retrieval
+## Blind SQL injection with time delays and information retrieval
 
 - In this case, we first need to identify which database we are dealing with. Since this is a **time-based** scenario, we test the payloads from the **cheat sheet** until one meets the delay condition we set.  
     [SQL injection cheat sheet | Web Security Academy](https://portswigger.net/web-security/sql-injection/cheat-sheet)
