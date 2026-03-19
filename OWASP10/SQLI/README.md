@@ -201,7 +201,8 @@ ____________________
     We also need to notice that, in this case, the query must be sent through the **Tracking Cookie**.
 
 
-![[Captura de pantalla 2026-01-29 203431.png]]
+<img width="1894" height="558" alt="Captura de pantalla 2026-01-29 203431" src="https://github.com/user-attachments/assets/61e41bbb-1d1c-48e1-89d4-b3ae6cfd747c" />
+
     With the attack vector identified, we now proceed to perform the **SQL injections**.
 
 - First, we verify that the user **'administrator'** exists in the **users** table:
@@ -372,9 +373,10 @@ print(f" Password :  {password}")
     It is important to highlight the correct use of ORACLE-specific syntax to avoid unintended errors. In this case, a very relevant detail is switching from 'substring' (used in MySQL and PostgreSQL) to SUBSTR, which is exclusive to ORACLE.
 
 
-![[Captura de pantalla 2026-01-30 232418.png]]
+<img width="596" height="557" alt="Captura de pantalla 2026-01-30 232418" src="https://github.com/user-attachments/assets/b237a850-caf3-4a95-a258-2b51878a0d61" />
 
-![[Captura de pantalla 2026-01-30 232119.png]]
+<img width="1443" height="372" alt="Captura de pantalla 2026-01-30 232119" src="https://github.com/user-attachments/assets/784fa534-0b3b-4db8-8bfe-347bdec868d9" />
+
 
 ______________________________
 
@@ -391,9 +393,11 @@ ______________________________
 
 - First, we test for basic **SQL injection** vulnerability:
 
-![[Captura de pantalla 2026-01-31 183948.png]] This **500 Internal Server Error** confirms the existence of a **SQL injection** point.
+<img width="1238" height="125" alt="Captura de pantalla 2026-01-31 183948" src="https://github.com/user-attachments/assets/70608b9e-cb1f-4119-86f8-5991ad2b54bd" />
+This **500 Internal Server Error** confirms the existence of a **SQL injection** point.
 
-![[Captura de pantalla 2026-01-31 184310.png]] In this case, closing the string with a double hyphen results in a **200 OK**, indicating our injection concatenated naturally with the query. This gives us a green light to continue injecting malicious scripts.
+<img width="1123" height="59" alt="Captura de pantalla 2026-01-31 184310" src="https://github.com/user-attachments/assets/57ae96b6-fbcf-43b4-9c56-c9a2c67521e1" />
+In this case, closing the string with a double hyphen results in a **200 OK**, indicating our injection concatenated naturally with the query. This gives us a green light to continue injecting malicious scripts.
 
 - Testing the **AND** logic:
 
@@ -403,7 +407,8 @@ SQL
 ' AND (SELECT 'hola')--
 ```
 
-![[Captura de pantalla 2026-02-01 001839.png]] This confirms that we must indeed operate with a boolean/binary logic!
+<img width="815" height="372" alt="Captura de pantalla 2026-02-01 001839" src="https://github.com/user-attachments/assets/688042ed-3565-404f-a195-44062a695a69" />
+This confirms that we must indeed operate with a boolean/binary logic!
 
 - We go to the **Cheat Sheet** to extract the standard script for these scenarios: [https://portswigger.net/web-security/sql-injection/cheat-sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
@@ -423,7 +428,7 @@ SELECT CAST((SELECT password FROM users LIMIT 1) AS int)
 ' AND 1=CAST((SELECT username from users LIMIT 1)AS int)--   
 ```
 
-![[Captura de pantalla 2026-02-01 003557.png]]
+<img width="1163" height="353" alt="Captura de pantalla 2026-02-01 003557" src="https://github.com/user-attachments/assets/a5667ee7-425f-48af-8ece-01d7c241ecad" />
     In this specific case, the query fails because it exceeds the character limit. Some pages truncate long inputs for security. To fix this, we must remove the original **TrackingId** value to make room for our payload.
 
 
@@ -431,9 +436,11 @@ SELECT CAST((SELECT password FROM users LIMIT 1) AS int)
 Cookie: TrackingId=' AND 1=CAST((SELECT password FROM users LIMIT 1)AS int)--
 ```
 
-![[Captura de pantalla 2026-01-31 231914.png]] With this change, the server "vomits" the password within the error message.
+<img width="711" height="376" alt="Captura de pantalla 2026-01-31 231914" src="https://github.com/user-attachments/assets/0109afda-2a6a-4e80-9583-e4f48e7d555c" />
+With this change, the server "vomits" the password within the error message.
 
-![[Captura de pantalla 2026-01-31 232134.png]]
+<img width="714" height="307" alt="Captura de pantalla 2026-01-31 232134" src="https://github.com/user-attachments/assets/975f3280-867a-4b5c-99cb-b1c1ebbcee41" />
+
 
 
 "We use the affirmative interpretation of the boolean comparison as the vehicle for our malicious script to be processed and return the data we want. Logically, a type error will occur afterwards, but that does not matter to us—that error is actually our exfiltration channel."
