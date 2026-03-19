@@ -2,18 +2,18 @@ _____________
 # 📑 SQL Injection: Lab Index & Exercise Guide
 
 * [Lab 01 — SQLi Login Bypass (Nickname administrator)](#lab-01--sqli-login-bypass-nickname-administrator)
-* [Lab 02 — Database Type & Version Enumeration (Oracle)](#lab-02--database-type--version-enumeration-oracle)
-* [Lab 03 — Database Type & Version Enumeration (MySQL & MSSQL)](#lab-03--database-type--version-enumeration-mysql--mssql)
-* [Lab 04 — Listing Database Contents (Non-Oracle / PostgreSQL)](#lab-04--listing-database-contents-non-oracle--postgresql)
-* [Lab 05 — Listing Database Contents (Oracle-Specific)](#lab-05--listing-database-contents-oracle-specific)
-* [Lab 06 — Blind SQLi: Conditional Responses (Welcome Back Message)](#lab-06--blind-sqli-conditional-responses-welcome-back-message)
-* [Lab 07 — Blind SQLi: Conditional Errors (Oracle 1/0 Trigger)](#lab-07--blind-sqli-conditional-errors-oracle-10-trigger)
-* [Lab 08 — Visible Error-Based SQLi (Exfiltration via CAST)](#lab-08--visible-error-based-sqli-exfiltration-via-cast)
-* [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](#lab-09--blind-sqli-time-delays--information-retrieval-postgresql)
+* [Lab 02 — Database Type & Version Enumeration (Oracle)](#lab-sql-injection-attack-querying-the-database-type-and-version-on-oracle)
+* [Lab 03 — Database Type & Version Enumeration (MySQL & MSSQL)](#sql-injection-attack-querying-the-database-type-and-version-on-mysql-and-microsoft)
+* [Lab 04 — Listing Database Contents (Non-Oracle / PostgreSQL)](#sql-injection-attack-listing-the-database-contents-on-non-oracle-databases)
+* [Lab 05 — Listing Database Contents (Oracle-Specific)](#sql-injection-attack-listing-the-database-contents-on-oracle)
+* [Lab 06 — Blind SQLi: Conditional Responses (Welcome Back Message)](#lab-blind-sql-injection-with-conditional-responses)
+* [Lab 07 — Blind SQLi: Conditional Errors (Oracle 1/0 Trigger)](#conditional-error)
+* [Lab 08 — Visible Error-Based SQLi (Exfiltration via CAST)](#visible-error-based-sql-injection)
+* [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](#blind-sql-injection-with-time-delays-and-information-retrieval)
 
 
 __________________
-## SQL injection vulnerability allowing login bypass
+## Lab 01 — SQLi Login Bypass (Nickname administrator)
 
 - For this next exercise we are given the **nickname**, which is `administrator`, but not the password, which we will obtain using the following injection 💉
 
