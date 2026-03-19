@@ -52,7 +52,7 @@ Event handlers (`onerror`, `onclick`, etc.) are different —
 they execute **at runtime**, which makes them reliable in this context.
 
 
-En ciberseguridad, la elección del vector XSS depende del **"sink"** (el lugar donde se inyecta el código): mientras que en **`document.write`** el payload `"><svg onload=alert(1)>` es ideal porque se ejecuta de forma síncrona al "romper" etiquetas existentes, en **`innerHTML`** es obligatorio usar manejadores de eventos como `<img src=x onerror=alert(1)>` debido a que los navegadores modernos bloquean por seguridad la ejecución de etiquetas `<script>` insertadas dinámicamente. En resumen, si el navegador "congela" el script por venir de una fuente desconocida tras la carga inicial, los **eventos de error o de carga** en etiquetas alternativas son la llave maestra para lograr la ejecución en tiempo de ejecución (_runtime_).
+In cybersecurity, the choice of XSS vector depends on the **"sink"** (the point where the code is injected): while in **`document.write`** the payload `"><svg onload=alert(1)>` is ideal because it executes synchronously by "breaking" existing tags, in **`innerHTML`** it is mandatory to use event handlers like `<img src=x onerror=alert(1)>` because modern browsers block the execution of dynamically inserted `<script>` tags for security reasons. In short, if the browser "freezes" the script because it comes from an unknown source after the initial load, **error or load events** in alternative tags are the key to achieving runtime execution.
 
 _______________________
 
