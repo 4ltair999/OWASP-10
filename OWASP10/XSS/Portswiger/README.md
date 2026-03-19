@@ -174,7 +174,7 @@ When input is injected **inside a JavaScript string**, the goal is **not to esca
 
 Operators like:
 
-- - + , || &&
+`-`, `+`, `,`, `|`, `&&`, `||`
 
 are used because they allow expressions to connect **without breaking execution**, not because they mean the same thing.
 ### Takeaway
