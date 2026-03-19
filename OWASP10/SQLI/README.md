@@ -394,9 +394,11 @@ ______________________________
 - First, we test for basic **SQL injection** vulnerability:
 
 <img width="1238" height="125" alt="Captura de pantalla 2026-01-31 183948" src="https://github.com/user-attachments/assets/70608b9e-cb1f-4119-86f8-5991ad2b54bd" />
+
 This **500 Internal Server Error** confirms the existence of a **SQL injection** point.
 
 <img width="1123" height="59" alt="Captura de pantalla 2026-01-31 184310" src="https://github.com/user-attachments/assets/57ae96b6-fbcf-43b4-9c56-c9a2c67521e1" />
+
 In this case, closing the string with a double hyphen results in a **200 OK**, indicating our injection concatenated naturally with the query. This gives us a green light to continue injecting malicious scripts.
 
 - Testing the **AND** logic:
@@ -408,6 +410,7 @@ SQL
 ```
 
 <img width="815" height="372" alt="Captura de pantalla 2026-02-01 001839" src="https://github.com/user-attachments/assets/688042ed-3565-404f-a195-44062a695a69" />
+
 This confirms that we must indeed operate with a boolean/binary logic!
 
 - We go to the **Cheat Sheet** to extract the standard script for these scenarios: [https://portswigger.net/web-security/sql-injection/cheat-sheet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
@@ -437,6 +440,7 @@ Cookie: TrackingId=' AND 1=CAST((SELECT password FROM users LIMIT 1)AS int)--
 ```
 
 <img width="711" height="376" alt="Captura de pantalla 2026-01-31 231914" src="https://github.com/user-attachments/assets/0109afda-2a6a-4e80-9583-e4f48e7d555c" />
+
 With this change, the server "vomits" the password within the error message.
 
 <img width="714" height="307" alt="Captura de pantalla 2026-01-31 232134" src="https://github.com/user-attachments/assets/975f3280-867a-4b5c-99cb-b1c1ebbcee41" />
@@ -531,9 +535,9 @@ for i in tqdm(range(1, 21), desc="Procesando...", colour="green"):
    print(f"[]Caracter encontrado {password} ")
 ```
 
-![[Captura de pantalla 2026-02-04 074725.png]]
+<img width="1903" height="440" alt="Captura de pantalla 2026-02-04 074725" src="https://github.com/user-attachments/assets/e41a2ff1-2247-4cca-9bfc-cd6019486304" />
 
-![[Captura de pantalla 2026-02-01 192712.png]]
+<img width="670" height="211" alt="Captura de pantalla 2026-02-01 192712" src="https://github.com/user-attachments/assets/6f59db35-d657-4484-b2f7-48e3c97dc78b" />
 
 ## Key points
 
