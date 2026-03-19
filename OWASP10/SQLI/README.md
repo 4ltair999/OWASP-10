@@ -10,7 +10,7 @@ _____________
 - [Lab 07 — Blind SQLi: Conditional Errors (Oracle `1/0` Trigger)](https://www.google.com/search?q=%23lab-07--blind-sqli-conditional-errors-oracle-10-trigger)
 - [Lab 08 — Visible Error-Based SQLi (Exfiltration via `CAST`)](https://www.google.com/search?q=%23lab-08--visible-error-based-sqli-exfiltration-via-cast)
 - [Lab 09 — Blind SQLi: Time Delays & Information Retrieval (PostgreSQL)](https://www.google.com/search?q=%23lab-09--blind-sqli-time-delays--information-retrieval-postgresql)
-
+ 
 __________________
 ## SQL injection vulnerability allowing login bypass
 
