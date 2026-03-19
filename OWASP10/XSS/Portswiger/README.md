@@ -1,18 +1,18 @@
 _______________
 # XSS: Lab Index
 
-- [Lab 01 — DOM XSS in jQuery anchor `href` attribute using `location.search`](https://www.google.com/search?q=%23dom-xss-in-jquery-anchor-href-attribute-using-locationsearch)
-- [Lab 02 — DOM XSS in jQuery selector sink using a `hashchange` event](https://www.google.com/search?q=%23lab-dom-xss-in-jquery-selector-sink-using-a-hashchange-event)
-- [Lab 03 — Reflected XSS into attribute with angle brackets HTML-encoded](https://www.google.com/search?q=%23lab-reflected-xss-into-attribute-with-angle-brackets-html-encoded)
-- [Lab 04 — Stored XSS into anchor `href` attribute with double quotes HTML-encoded](https://www.google.com/search?q=%23stored-xss-into-anchor-href-attribute-with-double-quotes-html-encoded)
-- [Lab 05 — Reflected XSS into a JavaScript string with angle brackets HTML-encoded](https://www.google.com/search?q=%23reflected-xss-into-a-javascript-string-with-angle-brackets-html-encoded)
-- [Lab 06 — DOM XSS in `document.write` sink using `location.search` inside a `select` element](https://www.google.com/search?q=%23lab-dom-xss-in-documentwrite-sink-using-locationsearch-inside-a-select-element)
-- [Lab 07 — DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](https://www.google.com/search?q=%23lab-dom-xss-in-angularjs-expression-with-angle-brackets-and-double-quotes-html-encoded)
-- [Lab 08 — Reflected XSS with some SVG markup allowed](https://www.google.com/search?q=%23lab-reflected-xss-with-some-svg-markup-allowed)
-- [Lab 09 — Reflected XSS protected by very strict CSP, with dangling markup attack](https://www.google.com/search?q=%23lab-reflected-xss-protected-by-very-strict-csp-with-dangling-markup-attack)
-- [Lab 10 — Reflected XSS protected by CSP, with CSP bypass](https://www.google.com/search?q=%23lab-reflected-xss-protected-by-csp-with-csp-bypass)
-- [Lab 11 — Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped](https://www.google.com/search?q=%23reflected-xss-into-a-javascript-string-with-angle-brackets-and-double-quotes-html-encoded-and-single-quotes-escaped)
-- [PoC — Proof of Concept (PoC) & Impact Analysis](https://www.google.com/search?q=%23proof-of-concept-poc--impact-analysis)
+* [Lab 01 — DOM XSS in jQuery anchor href attribute using location.search](#dom-xss-in-jquery-anchor-href-attribute-sink-using-locationsearch)
+* [Lab 02 — DOM XSS in jQuery selector sink using a hashchange event](#lab-dom-xss-in-jquery-selector-sink-using-a-hashchange-event)
+* [Lab 03 — Reflected XSS into attribute with angle brackets HTML-encoded](#lab-reflected-xss-into-attribute-with-angle-brackets-html-encoded)
+* [Lab 04 — Stored XSS into anchor href attribute with double quotes HTML-encoded](#stored-xss-into-anchor-href-attribute-with-double-quotes-html-encoded)
+* [Lab 05 — Reflected XSS into a JavaScript string with angle brackets HTML-encoded](#reflected-xss-into-a-javascript-string-with-angle-brackets-html-encoded)
+* [Lab 06 — DOM XSS in document.write sink using location.search inside a select element](#lab-dom-xss-in-documentwrite-sink-using-locationsearch-inside-a-select-element)
+* [Lab 07 — DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](#lab-dom-xss-in-angularjs-expression-with-angle-brackets-and-double-quotes-html-encoded)
+* [Lab 08 — Reflected XSS with some SVG markup allowed](#lab-reflected-xss-with-some-svg-markup-allowed)
+* [Lab 09 — Reflected XSS protected by very strict CSP, with dangling markup attack](#lab-reflected-xss-protected-by-very-strict-csp-with-dangling-markup-attack)
+* [Lab 10 — Reflected XSS protected by CSP, with CSP bypass](#lab-reflected-xss-protected-by-csp-with-csp-bypass)
+* [Lab 11 — Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped](#reflected-xss-into-a-javascript-string-with-angle-brackets-and-double-quotes-html-encoded-and-single-quotes-escaped)
+* [PoC — Proof of Concept (PoC) & Impact Analysis](#proof-of-concept-poc--impact-analysis)
 
 ___________________
 
