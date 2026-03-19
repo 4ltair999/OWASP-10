@@ -23,9 +23,9 @@ ___________________
     I checked the **submit feedback page** to see how the link was built.
     
 
-![[Captura de pantalla 2025-11-26 002805.png]]
+<img width="826" height="696" alt="Captura de pantalla 2025-11-26 002805" src="https://github.com/user-attachments/assets/20e3e0df-a7e8-461d-b28b-705d455392ab" />
 
-![[Captura de pantalla 2025-11-26 002922.png]]
+<img width="301" height="30" alt="Captura de pantalla 2025-11-26 002922" src="https://github.com/user-attachments/assets/1d5521ce-65e5-4d37-8298-b0558d188cb7" />
 
 - Since the link redirects to `/`, I tested whether the protocol was validated by injecting:
     
@@ -70,7 +70,7 @@ $(window).on('hashchange', function(){     var post = $('section.blog-list h2:co
 The input from `location.hash` ends up inside a **jQuery selector**, which becomes the execution sink.
 ## Solution
 
-![[Captura de pantalla 2026-01-16 213425.png]]
+<img width="1153" height="581" alt="Captura de pantalla 2026-01-16 213425" src="https://github.com/user-attachments/assets/1c0c97c9-b0c9-42e4-b616-704a6e476c61" />
 
 `<iframe src="https://0af8007f0309c28b80ce6cfc000d0084.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>`
 
@@ -129,7 +129,7 @@ ____________
     While reviewing the HTML structure, I noticed that the username is rendered inside an **anchor (`<a>`) tag using the `href` attribute**.
     
 
-![[Captura de pantalla 2025-11-14 184509.png]]
+<img width="688" height="210" alt="Captura de pantalla 2025-11-14 184509" src="https://github.com/user-attachments/assets/ba60abdd-1c1b-4127-a0c0-26600df550a6" />
 
 - The problem is that **user-controlled input is stored and later injected directly into `href`**, without proper validation of the protocol.  
     This makes the link a persistent execution point for XSS once a victim clicks it.
@@ -201,8 +201,9 @@ var stores = ["London","Paris","Milan"]; var store = (new URLSearchParams(window
 If we carefully compare the **source code** and the **front-end**, we notice a small but critical discrepancy.  
 On the page, the application appears to handle the variable `productId`, but in the source code the script actually reads `storeId`.
 
-![[Captura de pantalla 2026-01-17 133718.png]]  
-![[Captura de pantalla 2026-01-17 133946.png]]
+<img width="285" height="43" alt="Captura de pantalla 2026-01-17 133718" src="https://github.com/user-attachments/assets/b8deba56-92af-418d-a559-23c82f11e25f" />
+
+<img width="741" height="37" alt="Captura de pantalla 2026-01-17 133946" src="https://github.com/user-attachments/assets/b6fb83c3-44e9-4566-b851-f705a9a4210a" />
 
 Once this mismatch is identified, it becomes clear that the attack vector must be focused on **`storeId`**.  
 To do this, we manipulate the URL using the `&` (ampersand) character.
@@ -211,7 +212,7 @@ In URLs, `&` acts as a **parameter separator**. Since the URL already contains a
 
 That’s why we use the following payload:
 
-![[Captura de pantalla 2026-01-17 133858.png]]
+<img width="1127" height="68" alt="Captura de pantalla 2026-01-17 133858" src="https://github.com/user-attachments/assets/6b907382-e330-418a-8340-1da5aab68673" />
 
 With this payload, we close the existing `</select>` where `storeId` is injected and then append our exploit outside of it.
 
@@ -331,13 +332,13 @@ With these concepts in place, we can understand the solution. The lab title says
 
 - First, we verify whether `< >` are blocked by the firewall.
 
-![[Captura de pantalla 2026-01-18 155744 1.png]]
+<img width="562" height="34" alt="Captura de pantalla 2026-01-18 155744 1" src="https://github.com/user-attachments/assets/e2abaf78-ddcb-4e5c-8838-10799cebfd47" />
 
 - Once confirmed, we test whether the `<svg` keyword is filtered. Since it works, we proceed to test individual **SVG markup tags**. For this, we use **Burp Suite Intruder**, loading the tag list from:
 
 [https://portswigger.net/web-security/cross-site-scripting/cheat-sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
-![[Captura de pantalla 2026-01-18 170220.png]]
+<img width="1543" height="304" alt="Captura de pantalla 2026-01-18 170220" src="https://github.com/user-attachments/assets/69e44cd6-6413-4f9a-b56b-08391187e1a6" />
 
 - After running the attack, we identify which payloads return **HTTP 200**. These are the tags **not filtered by the WAF**:
 
@@ -534,7 +535,7 @@ _____________________________
 
 After sending this payload, we inspect the page behavior using the browser developer tools. Something very important and interesting appears in this lab: the **`?token=`** parameter.
 
-![[Captura de pantalla 2026-01-22 022811.png]]
+<img width="898" height="343" alt="Captura de pantalla 2026-01-22 022811" src="https://github.com/user-attachments/assets/32fbf96e-4ddb-4137-8832-f361024d5ddd" />
 
 We need to move to the **Network** tab in the Developer Tools to analyze this in detail.
 
@@ -556,7 +557,7 @@ _**If the value of a reflected CSP parameter is controlled by the user, we gain 
 
 - With these concepts understood, we craft our payload directly in the URL:
 
-![[Captura de pantalla 2026-01-22 031312.png]]
+<img width="1186" height="36" alt="Captura de pantalla 2026-01-22 031312" src="https://github.com/user-attachments/assets/a7161585-775f-4e7e-b0de-d87b053f045f" />
 
 - **Red section**: the _entry point_ — the `token` parameter, which allows us to inject content into the CSP.
 - 
@@ -569,7 +570,7 @@ _**If the value of a reflected CSP parameter is controlled by the user, we gain 
 
 - The previous step-by-step process demonstrates how to **modify the CSP** to successfully inject malicious JavaScript.
 
-![[Captura de pantalla 2026-01-22 032330.png]]
+<img width="803" height="216" alt="Captura de pantalla 2026-01-22 032330" src="https://github.com/user-attachments/assets/30d4a8e5-6806-4d04-aca2-3fb16d39d0c3" />
 
 ## Key Concepts
 
@@ -635,7 +636,8 @@ ________________________________________________________________
 - Once that happens, the injected JavaScript executes successfully.
 
 
-![[Captura de pantalla 2026-01-22 032330.png]]
+<img width="803" height="216" alt="Captura de pantalla 2026-01-22 032330" src="https://github.com/user-attachments/assets/c8bebb36-60fd-41d2-9654-4bc057478ff9" />
+
 
 ## Real-world application
 
