@@ -13,7 +13,9 @@
    
 <img width="2035" height="917" alt="Captura de pantalla (26)" src="https://github.com/user-attachments/assets/ab3f5b23-badf-40c4-be8d-baf28a7923ab" />
 
+
 - We copy this request and send it via **Stock API** so that the server can make this request for us, which will be to delete the user Carlos.
+
 
 <img width="601" height="59" alt="Captura de pantalla 2026-03-26 004559" src="https://github.com/user-attachments/assets/bf490e9b-89b6-48f2-b3b1-508e4fa1d080" />
 
