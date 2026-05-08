@@ -8,6 +8,7 @@
 <img width="2592" height="703" alt="Captura de pantalla (25) 1" src="https://github.com/user-attachments/assets/a71cab09-a2f3-4c4b-a3e1-235e2c307364" />
 
 
+
 - This is where we'll make the website send the malicious request "http://localhost/admin" ***It's important to always check which parameter is making the request because that's where the vulnerability is exploited***
    
 <img width="2035" height="917" alt="Captura de pantalla (26)" src="https://github.com/user-attachments/assets/ab3f5b23-badf-40c4-be8d-baf28a7923ab" />
