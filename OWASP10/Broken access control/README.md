@@ -12,7 +12,7 @@ ____________________________________
 
 - In this lab we are going to check **/robots.txt** and see the list of we should not see as a regular user. In this exercise we are executing a **vertical privilege attack**  `Which consists in gain access to functionality that we are not permitted`
 
-![[Captura de pantalla 2026-03-27 205256.png]]
+<img width="953" height="129" alt="Captura de pantalla 2026-03-27 205256" src="https://github.com/user-attachments/assets/0e84e129-6228-417a-8990-d9bbd4c81591" />
 
 - We realized the **/administratror-panel** is disallow, which is a crutial error
 
@@ -26,13 +26,13 @@ ____________________________________
 
 - Now let's replace the **/roboy.txt** for **/administratror-panel** 
 
-![[Captura de pantalla 2026-03-27 215616.png]]
+<img width="771" height="423" alt="Captura de pantalla 2026-03-27 215616" src="https://github.com/user-attachments/assets/07f1c4d9-33e1-4939-af3d-755d7924c98a" />
 
 - Now as the administrator let's delete the user **carlos**
 
-![[Captura de pantalla 2026-03-27 215644.png]]
+<img width="1413" height="433" alt="Captura de pantalla 2026-03-27 215644" src="https://github.com/user-attachments/assets/4f2ba2da-507c-4cdd-a1ca-d64d3cff97a0" />
 
-- Ity worked properly
+- It worked properly
 
      This exercise taught us two key concepts, first is the critical error **Disallowing /administratror-panel** allowing the attackers to escalate privileges and executing actions as **administrator** and second is taking advantage of public information provided by the robots.txt
 
@@ -43,17 +43,17 @@ __________________
 
 - For this exercise we need to locate the ***admin panel*** to elevate privileges and detele the user **carlos**, In this exercise we are executing a **vertical privilege attack**
 
-![[Captura de pantalla 2026-03-28 014729.png]]
+<img width="763" height="188" alt="Captura de pantalla 2026-03-28 014729" src="https://github.com/user-attachments/assets/125563e0-6ae7-4883-898e-4b58385263b3" />
 
      This specific exercise teach us how a security method such simple as change the name of the admin panel to distract us as pentester is not enough, this can be call as Security through Darkness (avoid obvious names that can call our attention)
  
 - We capture a request with burpsuite and if we analyze it we find the **Admin Panel** 
 
-![[Captura de pantalla 2026-03-28 015242.png]]
+<img width="698" height="437" alt="Captura de pantalla 2026-03-28 015242" src="https://github.com/user-attachments/assets/90141530-c0c2-4016-b2e5-ea8965a1b53d" />
 
 - We add it to the **main URL** and we get the access to the **admin account**, and we have the option to delete the users
 
-![[Captura de pantalla 2026-03-28 015331.png]]
+<img width="709" height="520" alt="Captura de pantalla 2026-03-28 015331" src="https://github.com/user-attachments/assets/34749895-fba1-4245-ae64-1d02146d28ae" />
 
 - We delete the user **Carlos**, exercise done.
 
@@ -66,19 +66,19 @@ ________________
      We are granted with credentials
      `wiener:peter`
 
-![[Captura de pantalla 2026-03-28 201824.png]]
+<img width="772" height="400" alt="Captura de pantalla 2026-03-28 201824" src="https://github.com/user-attachments/assets/7d21c8d0-940d-4a16-a41c-d10a9e5f86bc" />
 
 - If we capture a login request with our credentials we'll see the parameter **Admin** which is relationed with the panel **/admin** (which identifies administrators using a forgeable cookie.)
 
      Knowing this let's try modify the parameter **Admin** 
 
-![[Captura de pantalla 2026-03-28 202933.png]]
-     `False Admin`
+<img width="708" height="586" alt="Captura de pantalla 2026-03-28 202933" src="https://github.com/user-attachments/assets/edd77d64-271a-45a7-b5e4-0503d8815967" />
+    `False Admin`
 
-![[Captura de pantalla 2026-03-28 203057.png]]
+<img width="1186" height="419" alt="Captura de pantalla 2026-03-28 203057" src="https://github.com/user-attachments/assets/d78fe020-9012-47a1-bc18-5760fc47a9a4" />
      With the T**rue parameter activate**, we see we we inherited the **administrator privileges** therefore we can delete Users
 
-![[Captura de pantalla 2026-03-28 203143.png]]
+<img width="1170" height="585" alt="Captura de pantalla 2026-03-28 203143" src="https://github.com/user-attachments/assets/ea759a4a-d29b-46ca-8197-672888806062" />
 
 ```
 This lab is a classic example of Broken Access Control through parameter manipulation.
@@ -93,21 +93,21 @@ ____________________________________
 
 - We found it on the **change email** option
 
-![[Captura de pantalla 2026-03-29 035414.png]]
-     We logged in with the users provided by the exercise 
+<img width="996" height="311" alt="Captura de pantalla 2026-03-29 035414" src="https://github.com/user-attachments/assets/d1741f09-e619-447c-9ca0-b020630e8f64" />
+      We logged in with the users provided by the exercise 
  
 - The role **ID asigned** to the regular user is **1**, we need to change it to **2** that way we will get the **panel admin**, let's check if we can modify it 
 
-![[Captura de pantalla 2026-03-29 035511.png]]
+<img width="984" height="333" alt="Captura de pantalla 2026-03-29 035511" src="https://github.com/user-attachments/assets/20491312-35de-4163-b604-6d057b482027" />
 
 - We realized is possible, and if send the request we see the respond reflects the **"roleid":2**. Good new for us, now let's refresh the main page
 
-![[Captura de pantalla 2026-03-29 035606.png]]
+<img width="564" height="115" alt="Captura de pantalla 2026-03-29 035606" src="https://github.com/user-attachments/assets/ebbc43a0-3e70-4fcd-940b-0b65b031725e" />
      Refreshing the page we see we have access to the **Admin panel**, let's go in and delete the **User carlos**
 
-![[Captura de pantalla 2026-03-29 035634.png]]
+<img width="208" height="174" alt="Captura de pantalla 2026-03-29 035634" src="https://github.com/user-attachments/assets/93e40994-4a42-4b38-9a2c-7ad4eed05049" />
 
-![[Captura de pantalla 2026-03-29 035659.png]]
+<img width="1168" height="403" alt="Captura de pantalla 2026-03-29 035659" src="https://github.com/user-attachments/assets/4ac7e0a5-3b3e-45f3-86e4-7e9ceddfc3b2" />
 
 - It worked successfully
 
@@ -126,11 +126,11 @@ ______________
 
 - For this way let's capture a login request with **Burpsuite** 
 
-![[Captura de pantalla 2026-03-29 050245.png]]
+<img width="1319" height="271" alt="Captura de pantalla 2026-03-29 050245" src="https://github.com/user-attachments/assets/4b966582-ac45-4a30-81b9-c064347544e5" />
 
 -  System is giving us an **API Key**, let's test the parameter **id** changing the name to **Carlos** 
 
-![[Captura de pantalla 2026-03-29 050331.png]]
+<img width="1296" height="278" alt="Captura de pantalla 2026-03-29 050331" src="https://github.com/user-attachments/assets/1112d529-f880-40fb-9bf5-799641ec52ee" />
 
 - It worked, the **id** parameter with a poor sanitation let us to modify it to Carlos without any verification for security protocol
 
@@ -138,11 +138,11 @@ ______________
 
 - When we log in as **wiener** we see system it asigned us an  an **API Key**.
 
-![[Captura de pantalla 2026-03-29 050117.png]]
+<img width="967" height="711" alt="Captura de pantalla 2026-03-29 050117" src="https://github.com/user-attachments/assets/7c966d63-4f22-40cf-a927-ea0574a0af41" />
 
 - let's test the parameter **id** changing the name to **Carlos** 
 
-![[Captura de pantalla 2026-03-29 050051.png]]
+<img width="1328" height="716" alt="Captura de pantalla 2026-03-29 050051" src="https://github.com/user-attachments/assets/48cb4112-cf49-4bd6-b9c6-cfe07d53f890" />
 
 - It worked properly, this show us a **vague sanitization** giving us the chance to modify such important parameter and accessing critical important 
 
@@ -158,7 +158,7 @@ GUIDs play a crucial role in cybersecurity by ensuring that each enti
 
 - Browsing the website we see login bottom and some posts which have the name of the creator what will be relevant for the success of this exercise. let's check
 
-![[Captura de pantalla 2026-03-30 001240.png]]
+<img width="795" height="642" alt="Captura de pantalla 2026-03-30 001240" src="https://github.com/user-attachments/assets/363f3660-eeae-486d-9a42-53e7100de38e" />
 
 ```
 9227f71a-91c2-4b76-8e77-96b3fa635566
@@ -168,17 +168,17 @@ GUIDs play a crucial role in cybersecurity by ensuring that each enti
 
 	 As we do not have more information or clues to scale in priveleges we will use the **userId parameter** to replace for the ** Wiener**  where we have access 
 
-![[Captura de pantalla 2026-03-30 001524.png]]
+<img width="540" height="116" alt="Captura de pantalla 2026-03-30 001524" src="https://github.com/user-attachments/assets/199373e0-08c0-43c4-93a5-d4a6f24a0c8a" />
      Wiener account
 
-![[Captura de pantalla 2026-03-30 001713.png]]
-	Replacing the **userId parameter** and reloading the request we see, it accepted the ***userId*** and is givings us the **API Key** of carlos, what we need let's try it 
+<img width="1290" height="360" alt="Captura de pantalla 2026-03-30 001713" src="https://github.com/user-attachments/assets/7188e59b-b4f9-4d3c-a692-d1fd4a7abfd8" />
+     Replacing the **userId parameter** and reloading the request we see, it accepted the ***userId*** and is givings us the **API Key** of carlos, what we need let's try it 
 
 ```
 bF5dWRMuGpBt4qiApRXbfbhYqyPLi9WA
 ```
 
-![[Captura de pantalla 2026-03-30 000647.png]]
+<img width="1174" height="410" alt="Captura de pantalla 2026-03-30 000647" src="https://github.com/user-attachments/assets/16c87ea6-ff13-4892-bc79-540917f67650" />
 
 - It worked successfully, we have extracted the **API key** using the **userId parameter** as a chain
 
@@ -188,25 +188,25 @@ ___________________
 
 - In this exercise we will take advantage of a leak located on the redirection, let's check it. In this exercise we will execute a **Horizontal privilege attack** 
 
-![[Captura de pantalla 2026-04-03 002001.png]]
-     We logged in with the credentials exercise provide us 
+<img width="839" height="680" alt="Captura de pantalla 2026-04-03 002001" src="https://github.com/user-attachments/assets/70f5c687-4241-4c86-b67d-3ec2e2dd9875" />
+    We logged in with the credentials exercise provide us 
 
 - Now let's try changing the Id parameter to **Carlos** and see the response 
 
-![[Captura de pantalla 2026-04-03 002218.png]]
+<img width="586" height="693" alt="Captura de pantalla 2026-04-03 002218" src="https://github.com/user-attachments/assets/74c0f77a-76d5-4961-91fc-5335655ff867" />
      Sent us back to the login panel, let's capture the same request with **Burpsuite**
 
-![[Captura de pantalla 2026-04-03 002703.png]]
+<img width="323" height="31" alt="Captura de pantalla 2026-04-03 002703" src="https://github.com/user-attachments/assets/37200f03-fec3-4dda-88d9-e5a6fde30049" />
 
 - We dont see nothing relevant, let's change the **Id parameter**
 
-![[Captura de pantalla 2026-04-03 002858.png]]
+<img width="1493" height="288" alt="Captura de pantalla 2026-04-03 002858" src="https://github.com/user-attachments/assets/5962b045-4ec0-40e9-bd0f-341014896809" />
 
 - Successfully the redirect response contains the **API Key** of Carlos
 
-![[Captura de pantalla 2026-04-03 004241.png]]
+<img width="460" height="74" alt="Captura de pantalla 2026-04-03 004241" src="https://github.com/user-attachments/assets/764a850c-9fe5-4e79-a409-5d95337504fb" />
 
-![[Captura de pantalla 2026-03-30 024352.png]]
+<img width="1209" height="281" alt="Captura de pantalla 2026-03-30 024352" src="https://github.com/user-attachments/assets/3c0c6fbf-4361-48ad-9419-0525e9b7eae0" />
 
 
 >"Redirection is not a security mechanism, but a navigational one. This lab demonstrates that relying on a `302 Redirect` to protect sensitive data is useless if the server does not stop rendering the response, allowing the information to leak into the HTTP message body, invisible to the browser but accessible to an interception proxy."
@@ -217,20 +217,21 @@ __________________
 
 - For this exercise we need to exfiltrate the Administrator password and delete the user **Carlos** via a **basic Horizontal to Horizontal privilege attack**, the execise indicate us the leak is in the **update password** parameter 
 
-![[Captura de pantalla 2026-04-03 154631.png]]
+<img width="700" height="791" alt="Captura de pantalla 2026-04-03 154631" src="https://github.com/user-attachments/assets/7582598b-266d-46f2-872e-37bcfe72f164" />
 
 - We logged in with the credentials provided by the exercise, now we will test the **id parameter**, we have the options to update the **email** and the **Password**.
 
-![[Captura de pantalla 2026-04-03 011844.png]]
+<img width="1283" height="750" alt="Captura de pantalla 2026-04-03 011844" src="https://github.com/user-attachments/assets/39fba73c-dcbe-447a-86bb-f12ef0d0d01c" />
 
 - Changing the **Id parameter** from **wiener** to **administrator** it worked succesfully, we are loggedin as the administrator but we can not see the password, that's why we are going to reload the page  intercepting it with **Burpsuite**
 
-![[Captura de pantalla 2026-04-03 011945.png]]
+<img width="976" height="389" alt="Captura de pantalla 2026-04-03 011945" src="https://github.com/user-attachments/assets/fade390f-5cbb-4ed7-83f9-4570d91dc0e4" />
 
 - Intercepting the request and scrolling down we see the administrator's password is in the request body
 
      Now we just need to log in as the **administrator** and delete the user **Carlos**
-![[Captura de pantalla 2026-04-03 012021.png]]
+<img width="1181" height="405" alt="Captura de pantalla 2026-04-03 012021" src="https://github.com/user-attachments/assets/9da1b89f-b23b-44ce-becc-0d67c2b72c86" />
+
 
 
      This exercise teach us how the simple fact of don't sanitize the id parameter allow us to escalate privileges and execute commands and orders without face any security filter and the importance of Burpsuite because analizyng every peace of the request we can find crutial information for us as pentesters
@@ -243,13 +244,13 @@ ________________
 
 - In this exercise we will execute a **Insecure direct object references (IDORs)** which is a subcategory of access control vulnerabilities. The leak of this exercise is locate on the live chat, we need to find the password of user **Carlos**. In this exercise we will execute a **Horizontal privilege attack** 
 
-![[Captura de pantalla 2026-04-03 210234.png]]
+<img width="793" height="524" alt="Captura de pantalla 2026-04-03 210234" src="https://github.com/user-attachments/assets/b3318cd8-866d-4563-947f-6e076e110cc4" />
      **Live chat panel** where we have the option to send our **messages** and using the **View transcript bottom** to download our chats
 
 
 - **Chats** are saved as transcription as a static file, we will take advantage of this but first we need to capture the request to analize it 
 
-![[Captura de pantalla 2026-04-03 211007.png]]
+<img width="1245" height="354" alt="Captura de pantalla 2026-04-03 211007" src="https://github.com/user-attachments/assets/5897785d-5f10-4014-9466-e7f79f7b3d84" />
 
 - Key of this exercise is in this link:
 
@@ -258,7 +259,7 @@ ________________
 ```
       Now let's replace the 6.txt to 1.txt
 
-![[Captura de pantalla 2026-04-03 211154.png]]
+<img width="1236" height="259" alt="Captura de pantalla 2026-04-03 211154" src="https://github.com/user-attachments/assets/d87e6e96-4b23-4495-a05f-bed0087c41e9" />
 
 - Right now due to the lack of sanitation we are able to see the chat of `/download-transcript/1.txt HTTP/2` where we can see a password (clasic example of a **IDOR vulnerability** with direct reference to static files)
 
@@ -268,7 +269,7 @@ ________________
 
 - Let's use it to log in as Carlos 
 
-![[Captura de pantalla 2026-04-03 213931.png]]
+<img width="1217" height="369" alt="Captura de pantalla 2026-04-03 213931" src="https://github.com/user-attachments/assets/31a7d4fa-e9eb-4c00-8c6c-4059754a68c8" />
 
 - Exercise Solved.
 
@@ -282,24 +283,24 @@ __________
 
 - In this exercise we are facing a denied Method **POST** access (in the front end) which dont let us access to the **/Admin Panel** in order to delete the User **Carlos**. 
 
-![[Captura de pantalla 2026-04-05 023102.png]]
+<img width="958" height="166" alt="Captura de pantalla 2026-04-05 023102" src="https://github.com/user-attachments/assets/40aecddf-1ebc-418a-b492-1bb09d68a214" />
 
      Seeing we have a denied access we will take advantage of the non-standard HTTP Header  X-Original-URL which is accepted by the framework, allowing us to override the URL in the original request
 
 - First let's capture the request with **Burpsuite**
 
-![[Captura de pantalla 2026-04-05 024256.png]]
+<img width="1124" height="207" alt="Captura de pantalla 2026-04-05 024256" src="https://github.com/user-attachments/assets/436da7c2-2ef6-4832-a152-d6bca348514e" />
 
 - Now let's add the **X-Original-URL** together with **/admin**
 
-![[Captura de pantalla 2026-04-05 024230.png]]
+<img width="1267" height="417" alt="Captura de pantalla 2026-04-05 024230" src="https://github.com/user-attachments/assets/6abb3476-ba10-4ac9-90ad-8abab8e6afa9" />
 
 - We obtained a **200 status code** and more imporrtant we have access to the **/ Admin panel**, now we just need to copy the **/admin/panel?username=carlos** and execute it in the request
 
-![[Captura de pantalla 2026-04-05 024848.png]]
-     It's important remember the **X-Original-URL** does not accept **parameters**, also we need to set up the username in the **main header**
+<img width="1008" height="222" alt="Captura de pantalla 2026-04-05 024848" src="https://github.com/user-attachments/assets/91241101-3e95-4c7c-b310-50722787ec59" />
+      It's important remember the **X-Original-URL** does not accept **parameters**, also we need to set up the username in the **main header**
 
-![[Captura de pantalla 2026-04-05 024917.png]]
+<img width="1207" height="272" alt="Captura de pantalla 2026-04-05 024917" src="https://github.com/user-attachments/assets/daa5f9e4-7783-4f76-9175-f5649838aff2" />
 
 - If we re-load the page, the exercise is solved
 
@@ -335,11 +336,11 @@ ________________
 
 - Let's start login as the **administrator** (credentials provided by exercise), As the adminnistrator we have the option to **Upgrade the privileges of a specific user** . for the purposes of this exercise let's upgrade the privileges of the user **Carlos** 
 
-![[Captura de pantalla 2026-04-05 184055.png]]
+<img width="1169" height="414" alt="Captura de pantalla 2026-04-05 184055" src="https://github.com/user-attachments/assets/4c79f7c0-5493-4312-ba95-a8d30fbd5f48" />
 
 - Let's capture the request with **Burpsuite**
 
-![[Captura de pantalla 2026-04-05 184441.png]]
+<img width="854" height="317" alt="Captura de pantalla 2026-04-05 184441" src="https://github.com/user-attachments/assets/a6b83efc-a2e2-4031-b0fd-1e6efc43ec0f" />
 
 - Two important this:
 
@@ -349,7 +350,7 @@ ________________
 
  - With this information let's capture the  **Cookie session** of a regular user (wiener) and paste it in our  **/admin-roles request**
 
-![[Captura de pantalla 2026-04-05 192823.png]]
+<img width="604" height="276" alt="Captura de pantalla 2026-04-05 192823" src="https://github.com/user-attachments/assets/e5ef87c2-0ca7-4a83-b63a-c4f9c2607e68" />
 
 ```
 PH0fiM7AqocS0I11GJjSyCS8xVDhTo03
@@ -357,17 +358,17 @@ PH0fiM7AqocS0I11GJjSyCS8xVDhTo03
 
 -  Let's send the request with the **Cookie session**
 
-![[Captura de pantalla 2026-04-05 191548.png]]
+<img width="1010" height="94" alt="Captura de pantalla 2026-04-05 191548" src="https://github.com/user-attachments/assets/863b1c71-8340-4142-8796-287d02048f17" />
 
 - As we expected, the request was  **Unauthorized**, due to this is **sanitizated**
 
      In this moment is necessary to set up a new **HTTP request method**, as we see POST is sanitizated, let's go with **GET**  (for this we use the **change request method** in **burpsuite**)
 
-![[Captura de pantalla 2026-04-05 193034.png]]
+<img width="914" height="81" alt="Captura de pantalla 2026-04-05 193034" src="https://github.com/user-attachments/assets/1b077979-1489-4e54-a985-86dfe4cecc21" />
 
 - If we send the request we see it worked, we bypassed the **security HTTP request method filter**
 
-![[Captura de pantalla 2026-04-05 191952.png]]
+<img width="1214" height="374" alt="Captura de pantalla 2026-04-05 191952" src="https://github.com/user-attachments/assets/e1e21817-8e4e-4e06-b5cf-d83308a5039a" />
 
 ### Key points
 
@@ -399,11 +400,11 @@ ______
 
      First let's capture the **Upgrade request** from the **administrator user**
 
-![[Captura de pantalla 2026-04-06 164948.png]]
+<img width="1285" height="373" alt="Captura de pantalla 2026-04-06 164948" src="https://github.com/user-attachments/assets/34173e6b-3957-43a0-83dd-e92726ecf54b" />
 
 - We see on the response there are **three factors** which page use in the request, but in the request only **two factors are visible for users** so in base of this we need to add the third factor and the wiener session cookie.
 
-![[Captura de pantalla 2026-04-06 164342.png]]
+<img width="775" height="144" alt="Captura de pantalla 2026-04-06 164342" src="https://github.com/user-attachments/assets/65c037fb-24df-45dd-8454-2d2c6008024b" />
 
 ```
 cs4iIHokTTTosF6FkJQqSn6Qa41uJl7h
@@ -411,14 +412,14 @@ cs4iIHokTTTosF6FkJQqSn6Qa41uJl7h
 
 - Now let's verify it on the **/ admin-roles request** but we need to provee it with the user Carlos first to see if the third factor is vulnerable
 
-![](file:///C:/Users/andre/OneDrive/Desktop/Screenshots%20ejercicios/Captura%20de%20pantalla%202026-04-06%20165105.png)
+<img width="1002" height="293" alt="Captura de pantalla 2026-04-06 165105" src="https://github.com/user-attachments/assets/d1d15bcc-fd36-4a62-a1dc-d7dbc9b04774" />
      **status code 302** worked successfully, let's do it now with **wiener**
 
-![[Captura de pantalla 2026-04-06 165310.png]]
+<img width="992" height="304" alt="Captura de pantalla 2026-04-06 165310" src="https://github.com/user-attachments/assets/df6176d3-783d-4419-9efb-be2d5a6774d5" />
 
 - Our attack worked properly, we have upgrated the User Wiener. 
 
-![[Captura de pantalla 2026-04-06 164637.png]]
+<img width="1197" height="379" alt="Captura de pantalla 2026-04-06 164637" src="https://github.com/user-attachments/assets/83ab8378-869b-4647-93e0-8e39c9b002a4" />
 
 ## Key points
 
@@ -431,28 +432,28 @@ _______________
 - In this exercise we execute an attack base on the trust the page relies in the **refererer parameter** in order to upgrade our **user Wiener** from his the same account (Not from the **administrator user**) 
 
      First let's log in as the **administrator** and upgrade the **user Carlos** in order to analize this request 
-![[Captura de pantalla 2026-04-07 001837.png]]
+<img width="1171" height="288" alt="Captura de pantalla 2026-04-07 001837" src="https://github.com/user-attachments/assets/baaee920-3aa5-41aa-9f9c-311967cdfcce" />
 
 - Let's capture this with **Burpsuite**
 
-![[Captura de pantalla 2026-04-07 001002.png]]
+<img width="873" height="121" alt="Captura de pantalla 2026-04-07 001002" src="https://github.com/user-attachments/assets/a8082736-d5ff-401b-bbfd-2db8e69055b3" />
 
 - We observe the **end point /admin** (apart from the **main URL**) in the end of the referer, we can assume it is neccesary to **upgrade users** due to there are not more.
 
-![[Captura de pantalla 2026-04-07 001103.png]]
+<img width="608" height="54" alt="Captura de pantalla 2026-04-07 001103" src="https://github.com/user-attachments/assets/4b577db0-3d0e-4607-a80f-38b2d58badb7" />
      Let's captute the **Main account request** from **Wiener** to copy his **Cookie session**
 
 - Now let's paste it on the **/admin-roles request** and test it to upgrade the **User Carlos**, If the request is sucessfull we confirm the main point. Even if we use the **Session cookie** of an **unathorized user** what really matters for the **security filters** is the **end point /admin** in the end of the link
 
-![[Captura de pantalla 2026-04-07 001308.png]]
+<img width="895" height="67" alt="Captura de pantalla 2026-04-07 001308" src="https://github.com/user-attachments/assets/33f223dc-77a1-410d-8ade-c850a1ffb7b2" />
 
 - It worked successfully, ah this point we only need to upgrade our **user Wiener**
 
-![[Captura de pantalla 2026-04-07 001427.png]]
+<img width="879" height="77" alt="Captura de pantalla 2026-04-07 001427" src="https://github.com/user-attachments/assets/0d91f382-e821-4b3e-aab7-e8cd5c3c2094" />
 
 - **Status code 302 (redirection)** it worked as we expected. now let's reload the main page 
 
-![[Captura de pantalla 2026-04-07 001536.png]]
+<img width="1230" height="270" alt="Captura de pantalla 2026-04-07 001536" src="https://github.com/user-attachments/assets/1feba76c-cac2-4eec-a021-1792056a38b5" />
 
 > This exercise taught us how only one vague measured can not protect the page integrity by himself, it needs more security filters, by him self is good but it is not enough
 
@@ -497,106 +498,3 @@ In complex audits, **Broken Access Control** is the leverage point to move from 
 
 
 
-______________
-
-
-```
-sudo killall -9 java firefox-esr
-firefox-esr: no process found
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# 
-[1]  + killed     burpsuite 2> /dev/null
-┌──(root㉿kali)-[/home/kali]
-└─# sudo swapoff -a && sudo swapon -a
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# rm -rf ~/.BurpSuite/
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo apt clean && sudo apt autoremove
-Summary:                        
-  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 2144
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo swapoff -a && sudo swapon -a
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo killall -9 java            
-java: no process found
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo killall -9 javascript
-javascript: no process found
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo kill -9 46457        
-kill: (46457): No such process
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo swapoff -a && sudo swapon -a
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# sudo swapoff -a && sudo swapon -a
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
-vm.swappiness=10
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# echo "alias burpsuite='burpsuite -Xmx512m'" >> ~/.zshrc
-                                                                                                                                                                                                                                           
-┌──(root㉿kali)-[/home/kali]
-└─# source ~/.zshrc
-
-```
-`*.vdi` y luego prueba con `*.vmdk`
-
-```
- top -o %MEM
-```
-
-```
-alias killfox='pkill -9 firefox-esr'
-```
-
-
-echo "alias fix='sudo swapoff -a && sudo swapon -a && sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches && echo \"Sistema Limpio\"'" >> ~/.zshrc
-source ~/.zshrc
-
-
-
-
-Aquí tienes el comando exacto. Ejecútalo en tu terminal para forzar al sistema a liberar la memoria caché (pagecache, dentries e inodes) de inmediato:
-
-`sudo sync; echo 3 | sudo tee /proc/sys/vm/drop_caches`
-
-### Qué hace exactamente:
-
-- **`sudo sync`**: Obliga al sistema a escribir cualquier dato pendiente en el disco para que no se pierda nada antes de limpiar.
-    
-- **`echo 3`**: Es el valor que le ordena al kernel limpiar **toda** la caché (páginas, directorios e nodos).
-    
-- **`sudo tee /proc/sys/vm/drop_caches`**: Escribe ese valor directamente en el archivo del sistema que gestiona la limpieza de memoria.
-
-
-
-```
-firefox-esr --safe-mode
-```
-
-```
-java -Xmx1024m -jar /usr/bin/burpsuite
-```
-
-```
-jobs
-```
-
-```
-kill %1
-```
-
-```
-about:memory
-```
